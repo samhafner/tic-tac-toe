@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: #222;
+  color: white;
+  font-family: "Asap", sans-serif;
+  text-align: center;
+}
+
+h1 {
+  color: #7066e0;
+  font-size: 4rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 1rem;
+}
+
+.grid-container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.grid-container div:hover {
+  opacity: 0.8;
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.current-player {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 3rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.current-player div {
+  padding: 0.5rem;
+}
+
+.green {
+  background-color: #49ff58;
+  color: #222;
+  border-radius: 10px;
+}
+
+.new-game-button {
+  padding: 0.5rem;
+  background-color: #222;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.new-game-button:hover {
+  background-color: #7066e0;
+  border-color: #7066e0;
+}
+
+.display-area {
+  margin: 1.5rem 0 1rem 0;
+}
+
+/* for Swal popup */
+.popup-icon-style {
+  font-size: 3rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.popup-icon-style.x {
+  color: #ffa02e;
+}
+
+.popup-icon-style.o {
+  color: #62fffc;
+}
+
+/*# sourceMappingURL=main.css.map */
