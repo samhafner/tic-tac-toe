@@ -38,7 +38,7 @@ cellElements.forEach(cell => {
 function newGame() {
     // gameBoard.style.opacity = 1;
     currentPlayerArea.style.visibility = "visible";
-    document.getElementById("player-x-turn").classList.add("green");
+
     gameState = ["", "", "", "", "", "", "", "", ""];
     isPlayerXTurn = true;
     gameActive = true;
@@ -49,8 +49,8 @@ function newGame() {
 
     const x = document.getElementById("player-x-turn");
     const o = document.getElementById("player-o-turn");
-    x.classList.add("green")
-    o.classList.remove("green")
+    x.classList.add("green-bg-highlight")
+    o.classList.remove("green-bg-highlight")
 
 }
 
@@ -93,11 +93,11 @@ function nextTurn() {
     const x = document.getElementById("player-x-turn");
     const o = document.getElementById("player-o-turn");
     if (isPlayerXTurn) {
-        x.classList.add("green")
-        o.classList.remove("green")
+        x.classList.add("green-bg-highlight")
+        o.classList.remove("green-bg-highlight")
     } else {
-        o.classList.add("green");
-        x.classList.remove("green");
+        o.classList.add("green-bg-highlight");
+        x.classList.remove("green-bg-highlight");
     }
 }
 

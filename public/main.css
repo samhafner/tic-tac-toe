@@ -1,7 +1,5 @@
 body {
   margin: 0;
-  width: 100vw;
-  height: 100vh;
   box-sizing: border-box;
   background-color: #222;
   color: white;
@@ -11,7 +9,7 @@ body {
 
 h1 {
   color: #7066e0;
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 .container {
@@ -28,7 +26,6 @@ h1 {
   grid-template-rows: repeat(3, 100px);
   gap: 1rem;
 }
-
 .grid-container div {
   display: flex;
   justify-content: center;
@@ -38,19 +35,12 @@ h1 {
   border: 2px solid white;
   border-radius: 10px;
 }
-
 .grid-container div:hover {
   opacity: 0.8;
 }
 
 .board {
-  width: 100vw;
-  height: 100vh;
   display: grid;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
   grid-template-columns: repeat(3, auto);
 }
 
@@ -61,34 +51,14 @@ h1 {
   justify-content: center;
   margin-top: 2rem;
 }
-
 .current-player div {
   padding: 0.5rem;
 }
 
-.green {
+.green-bg-highlight {
   background-color: #49ff58;
   color: #222;
   border-radius: 10px;
-}
-
-.new-game-button {
-  padding: 0.5rem;
-  background-color: #222;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-}
-
-.new-game-button:hover {
-  background-color: #7066e0;
-  border-color: #7066e0;
-}
-
-.display-area {
-  margin: 1.5rem 0 1rem 0;
 }
 
 /* for Swal popup */
@@ -99,12 +69,18 @@ h1 {
   padding: 0.5rem;
 }
 
-.popup-icon-style.x {
-  color: #ffa02e;
+.new-game-button {
+  padding: 0.6rem;
+  background-color: #222;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
 }
-
-.popup-icon-style.o {
-  color: #62fffc;
+.new-game-button:hover {
+  background-color: #7066e0;
+  border-color: #7066e0;
 }
 
 /*# sourceMappingURL=main.css.map */

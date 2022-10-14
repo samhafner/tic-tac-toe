@@ -1,0 +1,54 @@
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.grid-container {
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	grid-template-columns: repeat(3, 100px);
+	grid-template-rows: repeat(3, 100px);
+	gap: 1rem;
+
+	div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 3.5rem;
+		cursor: pointer;
+		border: 2px solid $text-color;
+		border-radius: 10px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+}
+
+.board {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+}
+
+.current-player {
+	display: flex;
+	gap: 0.5rem;
+	font-size: 3rem;
+	justify-content: center;
+	margin-top: 2rem;
+
+	div {
+		padding: 0.5rem;
+	}
+}
+
+.green-bg-highlight {
+	background-color: #49ff58;
+	color: $primary-background-color;
+	border-radius: 10px;
+}
+
