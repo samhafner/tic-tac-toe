@@ -2,10 +2,11 @@ const playerDisplay = document.getElementById("player-turn");
 const newGameButton = document.getElementById("new-game-button");
 const currentPlayerArea = document.getElementById("current-player");
 const gameBoard = document.getElementById("board");
-
+const toggleNPC = document.getElementById("toggleNPC");
 
 let isPlayerXTurn = true;
 let gameActive = true;
+let playAgainstComputer = false;
 let gameState = ["", "", "", "", "", "", "", "", ""];
 const winningCombinations = [
     [0, 1, 2],
@@ -32,7 +33,17 @@ newGameButton.addEventListener("click", newGame);
 const cellElements = document.querySelectorAll('.grid-container div');
 cellElements.forEach(cell => {
     cell.addEventListener('click', handleCellClick)
-})
+});
+toggleNPC.addEventListener("click", setNPC);
+
+// Activate Computer Player, based on user's choice
+function setNPC() {
+    if (toggleNPC.checked) {
+        playAgainstComputer = true;
+    } else {
+        playAgainstComputer = false;
+    }
+}
 
 // newGame Function
 function newGame() {
@@ -67,7 +78,7 @@ function handleCellClick(e) {
         return;
     }
 
-    // depending on whcih turn it is, fill the cell with teh corresponding icon
+    // depending on the player, fill the chosen cell with the corresponding icon
     if (isPlayerXTurn) {
         e.currentTarget.innerHTML = xSymbol;
     } else {
@@ -84,8 +95,13 @@ function handleCellClick(e) {
     }
 
     // check the state of the game (win, tie)
-    handleResultValidation();
+    if (handleResultValidation()) return;
+
     nextTurn();
+
+    if (playAgainstComputer) {
+        npc();
+    }
 }
 
 function nextTurn() {
@@ -132,11 +148,14 @@ function handleResultValidation() {
         }
     }
     if (gameState.indexOf("") === -1 && !roundWon) {
+        currentPlayerArea.style.visibility = "hidden";
         popMessage("Tie.")
     }
+
+    return roundWon;
 }
 
-function popMessage (text) {
+function popMessage(text) {
     Swal.fire({
         title: text,
         backdrop: true,
@@ -145,7 +164,40 @@ function popMessage (text) {
         background: "#222",
         confirmButtonText: "New Game",
         showCancelButton: true,
-    }).then( result => {
+    }).then(result => {
         if (result.isConfirmed) newGame();
     });
+}
+
+function npc() {
+    const emptyCells = []
+
+    for (const n of document.querySelectorAll('.grid-container div')) {
+        if (n.innerHTML === "") {
+            emptyCells.push(n.id)
+        }
+    }
+
+    const rnd = Math.floor(Math.random() * emptyCells.length);
+
+
+    clickedCellID = parseInt(emptyCells[rnd]);
+
+    if (isPlayerXTurn) {
+        gameState[clickedCellID - 1] = "X";
+    } else {
+        gameState[clickedCellID - 1] = "O";
+    }
+
+
+
+    if (isPlayerXTurn) {
+        document.getElementById(clickedCellID).innerHTML = xSymbol;
+    } else {
+        document.getElementById(clickedCellID).innerHTML = oSymbol;
+    }
+
+
+    handleResultValidation();
+    nextTurn();
 }

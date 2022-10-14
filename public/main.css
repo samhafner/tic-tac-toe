@@ -2,7 +2,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: #222;
-  color: white;
+  color: rgb(216, 216, 216);
   font-family: "Asap", sans-serif;
   text-align: center;
 }
@@ -14,8 +14,11 @@ h1 {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .grid-container {
@@ -32,7 +35,7 @@ h1 {
   align-items: center;
   font-size: 3.5rem;
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px solid rgb(216, 216, 216);
   border-radius: 10px;
 }
 .grid-container div:hover {
@@ -64,7 +67,7 @@ h1 {
 /* for Swal popup */
 .popup-icon-style {
   font-size: 3rem;
-  border: 2px solid white;
+  border: 2px solid rgb(216, 216, 216);
   border-radius: 5px;
   padding: 0.5rem;
 }
@@ -72,15 +75,78 @@ h1 {
 .new-game-button {
   padding: 0.6rem;
   background-color: #222;
-  color: white;
-  border: 1px solid white;
+  color: rgb(216, 216, 216);
+  font-weight: bolder;
+  border: 2px solid #7066e0;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 1.5rem;
 }
 .new-game-button:hover {
   background-color: #7066e0;
-  border-color: #7066e0;
+}
+
+.toggle {
+  align-items: center;
+  border-radius: 100px;
+  display: flex;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.toggle:last-of-type {
+  margin: 0;
+}
+
+.toggle__input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.toggle-track {
+  border: 2px solid #7066e0;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  margin-right: 12px;
+  position: relative;
+  width: 60px;
+}
+
+.toggle-indicator {
+  align-items: center;
+  background: #7066e0;
+  border-radius: 24px;
+  bottom: 3px;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  left: 3px;
+  outline: solid 2px transparent;
+  position: absolute;
+  transition: 0.2s;
+  width: 24px;
+}
+
+.checkMark {
+  fill: #fff;
+  height: 20px;
+  width: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.toggle__input:checked + .toggle-track .toggle-indicator {
+  background: #7066e0;
+  transform: translateX(30px);
+}
+.toggle__input:checked + .toggle-track .toggle-indicator .checkMark {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
 
 /*# sourceMappingURL=main.css.map */

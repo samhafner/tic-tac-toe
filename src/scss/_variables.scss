@@ -1,9 +1,19 @@
 // Colors
 $primary-color: #7066e0;
 $primary-background-color: #222;
-$text-color: white;
+$text-color: rgb(216, 216, 216);
 $player1-color: #ffa02e;
 $player2-color: #62fffc;
 
+
 // Fonts
 $main-font: 'Asap', sans-serif;
+
+// toggle NPC
+$dark: purple;
+$toggle-indicator-size: 24px; // changing this number will resize the whole toggle
+$track-height: $toggle-indicator-size + 6;
+$track-width: $toggle-indicator-size * 2.5;
+$highContrastModeSupport: solid 2px transparent;
+$track-border: $primary-color;
+$speed: 0.2s;

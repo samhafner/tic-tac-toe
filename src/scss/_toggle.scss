@@ -1,0 +1,71 @@
+
+
+// Toggle specific styles
+.toggle {
+	align-items: center;
+	border-radius: 100px;
+	display: flex;
+	font-weight: 700;
+	margin-bottom: 16px;
+
+	&:last-of-type {
+		margin: 0;
+	}
+}
+
+// Since we can't style the checkbox directly, we "hide" it so we can draw the toggle.
+.toggle__input {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+
+}
+
+.toggle-track {
+	border: 2px solid $track-border;
+	border-radius: 100px;
+	cursor: pointer;
+	display: flex;
+	height: $track-height;
+	margin-right: 12px;
+	position: relative;
+	width: $track-width;
+}
+
+.toggle-indicator {
+	align-items: center;
+	background: $primary-color;
+	border-radius: $toggle-indicator-size;
+	bottom: 3px;
+	display: flex;
+	height: $toggle-indicator-size;
+	justify-content: center;
+	left: 3px;
+	outline: $highContrastModeSupport;
+	position: absolute;
+	transition: $speed;
+	width: $toggle-indicator-size;
+}
+
+// The check mark is optional
+.checkMark {
+	fill: #fff;
+	height: $toggle-indicator-size - 4;
+	width: $toggle-indicator-size - 4;
+	opacity: 0;
+	transition: opacity $speed ease-in-out;
+}
+
+.toggle__input:checked + .toggle-track .toggle-indicator {
+	background: $primary-color;
+	transform: translateX($track-width - $track-height);
+
+	.checkMark {
+		opacity: 1;
+		transition: opacity $speed ease-in-out;
+	}
+}

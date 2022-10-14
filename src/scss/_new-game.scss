@@ -2,14 +2,13 @@
 	padding: 0.6rem;
 	background-color: $primary-background-color;
 	color: $text-color;
-	border: 1px solid $text-color;
+	font-weight: bolder;
+	border: 2px solid $primary-color;;
 	border-radius: 10px;
 	cursor: pointer;
-	margin-bottom: 1.5rem;
 
 	&:hover {
 		background-color: $primary-color;
-		border-color: $primary-color;
 	}
 }
 
