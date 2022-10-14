@@ -1,4 +1,4 @@
-
+// adapted https://codepen.io/xirclebox/pen/wvGmjbV
 
 // Toggle specific styles
 .toggle {
@@ -23,6 +23,11 @@
 	white-space: nowrap;
 	width: 1px;
 
+    &:disabled + .toggle-track {
+		cursor: not-allowed;
+		opacity: 0.7;
+	}
+    
 }
 
 .toggle-track {
@@ -38,14 +43,14 @@
 
 .toggle-indicator {
 	align-items: center;
-	background: $primary-color;
+	background: $secondary-color;
 	border-radius: $toggle-indicator-size;
+    opacity: 0.6;
 	bottom: 3px;
 	display: flex;
 	height: $toggle-indicator-size;
 	justify-content: center;
 	left: 3px;
-	outline: $highContrastModeSupport;
 	position: absolute;
 	transition: $speed;
 	width: $toggle-indicator-size;
@@ -61,7 +66,8 @@
 }
 
 .toggle__input:checked + .toggle-track .toggle-indicator {
-	background: $primary-color;
+	background: $secondary-color;
+    opacity: 1;
 	transform: translateX($track-width - $track-height);
 
 	.checkMark {

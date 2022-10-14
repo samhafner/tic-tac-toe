@@ -5,6 +5,7 @@ const gameBoard = document.getElementById("board");
 const toggleNPC = document.getElementById("toggleNPC");
 
 let isPlayerXTurn = true;
+let players = ["X", "O"];
 let gameActive = true;
 let playAgainstComputer = false;
 let gameState = ["", "", "", "", "", "", "", "", ""];
@@ -78,21 +79,10 @@ function handleCellClick(e) {
         return;
     }
 
-    // depending on the player, fill the chosen cell with the corresponding icon
-    if (isPlayerXTurn) {
-        e.currentTarget.innerHTML = xSymbol;
-    } else {
-        e.currentTarget.innerHTML = oSymbol;
-    }
-
-    // fill the gameState array with the current player tag
-    // depending on which cell was clicked, fill the corresponding index + 1
+    
     const clickedCellID = parseInt(e.currentTarget.id);
-    if (isPlayerXTurn) {
-        gameState[clickedCellID - 1] = "X";
-    } else {
-        gameState[clickedCellID - 1] = "O";
-    }
+
+    fillSymbol(clickedCellID, e.currentTarget);
 
     // check the state of the game (win, tie)
     if (handleResultValidation()) return;
@@ -104,16 +94,29 @@ function handleCellClick(e) {
     }
 }
 
+function fillSymbol (num, target) {
+    // depending on the player, fill the chosen cell with the corresponding icon
+    // fill the gameState array with the current player tag
+    if (isPlayerXTurn) {
+        gameState[num - 1] = players[0];
+        target.innerHTML = xSymbol;
+    } else {
+        gameState[num - 1] = players[1];
+        target.innerHTML = oSymbol;
+    }
+}
+
 function nextTurn() {
+    const greenBG = "green-bg-highlight";
     isPlayerXTurn = !isPlayerXTurn;
     const x = document.getElementById("player-x-turn");
     const o = document.getElementById("player-o-turn");
     if (isPlayerXTurn) {
-        x.classList.add("green-bg-highlight")
-        o.classList.remove("green-bg-highlight")
+        x.classList.add(greenBG)
+        o.classList.remove(greenBG)
     } else {
-        o.classList.add("green-bg-highlight");
-        x.classList.remove("green-bg-highlight");
+        o.classList.add(greenBG);
+        x.classList.remove(greenBG);
     }
 }
 
@@ -124,10 +127,13 @@ function handleResultValidation() {
         let a = gameState[winCondition[0]];
         let b = gameState[winCondition[1]];
         let c = gameState[winCondition[2]];
+
         // if one of the elements is empty, continue with the next iteration of the loop
         if (a === '' || b === '' || c === '') {
             continue;
         }
+
+        // if all are the same, the game is won
         if (a === b && b === c) {
             roundWon = true;
             gameActive = false;
@@ -141,12 +147,13 @@ function handleResultValidation() {
             });
 
             // popup saying who won
-            popMessage(`Player ${isPlayerXTurn ? "X" : "O"} has won the game.`);
+            popMessage(`Player ${isPlayerXTurn ? players[0] : players[1]} has won the game.`);
 
-            // if the round is won, break out of the loop
+            // the round is won, break out of the loop
             break;
         }
     }
+
     if (gameState.indexOf("") === -1 && !roundWon) {
         currentPlayerArea.style.visibility = "hidden";
         popMessage("Tie.")
@@ -170,34 +177,22 @@ function popMessage(text) {
 }
 
 function npc() {
-    const emptyCells = []
-
-    for (const n of document.querySelectorAll('.grid-container div')) {
-        if (n.innerHTML === "") {
-            emptyCells.push(n.id)
+    
+    // create an array of all the empty cells with the corresponding IDs
+    const emptyCells = [];
+    for (const cell of document.querySelectorAll('.grid-container div')) {
+        if (cell.innerHTML === "") {
+            emptyCells.push(cell.id)
         }
     }
 
     const rnd = Math.floor(Math.random() * emptyCells.length);
 
-
     clickedCellID = parseInt(emptyCells[rnd]);
 
-    if (isPlayerXTurn) {
-        gameState[clickedCellID - 1] = "X";
-    } else {
-        gameState[clickedCellID - 1] = "O";
-    }
-
-
-
-    if (isPlayerXTurn) {
-        document.getElementById(clickedCellID).innerHTML = xSymbol;
-    } else {
-        document.getElementById(clickedCellID).innerHTML = oSymbol;
-    }
-
+    fillSymbol(clickedCellID, document.getElementById(clickedCellID));
 
     handleResultValidation();
+    
     nextTurn();
 }

@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-  color: #7066e0;
+  color: #8175FF;
   font-size: 5rem;
 }
 
@@ -47,23 +47,6 @@ h1 {
   grid-template-columns: repeat(3, auto);
 }
 
-.current-player {
-  display: flex;
-  gap: 0.5rem;
-  font-size: 3rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-.current-player div {
-  padding: 0.5rem;
-}
-
-.green-bg-highlight {
-  background-color: #49ff58;
-  color: #222;
-  border-radius: 10px;
-}
-
 /* for Swal popup */
 .popup-icon-style {
   font-size: 3rem;
@@ -77,12 +60,13 @@ h1 {
   background-color: #222;
   color: rgb(216, 216, 216);
   font-weight: bolder;
-  border: 2px solid #7066e0;
+  border: 2px solid #69ACFF;
   border-radius: 10px;
   cursor: pointer;
 }
 .new-game-button:hover {
-  background-color: #7066e0;
+  background-color: #69ACFF;
+  color: #222;
 }
 
 .toggle {
@@ -105,48 +89,70 @@ h1 {
   white-space: nowrap;
   width: 1px;
 }
+.toggle__input:disabled + .toggle-track {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 
 .toggle-track {
-  border: 2px solid #7066e0;
+  border: 2px solid #69ACFF;
   border-radius: 100px;
   cursor: pointer;
   display: flex;
-  height: 30px;
+  height: 31px;
   margin-right: 12px;
   position: relative;
-  width: 60px;
+  width: 62.5px;
 }
 
 .toggle-indicator {
   align-items: center;
-  background: #7066e0;
-  border-radius: 24px;
+  background: #69ACFF;
+  border-radius: 25px;
+  opacity: 0.6;
   bottom: 3px;
   display: flex;
-  height: 24px;
+  height: 25px;
   justify-content: center;
   left: 3px;
-  outline: solid 2px transparent;
   position: absolute;
   transition: 0.2s;
-  width: 24px;
+  width: 25px;
 }
 
 .checkMark {
   fill: #fff;
-  height: 20px;
-  width: 20px;
+  height: 21px;
+  width: 21px;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
 .toggle__input:checked + .toggle-track .toggle-indicator {
-  background: #7066e0;
-  transform: translateX(30px);
+  background: #69ACFF;
+  opacity: 1;
+  transform: translateX(31.5px);
 }
 .toggle__input:checked + .toggle-track .toggle-indicator .checkMark {
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
+}
+
+.current-player {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+.current-player div {
+  padding: 0.5rem;
+}
+
+.green-bg-highlight {
+  background-color: #49ff58;
+  color: #222;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */

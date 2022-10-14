@@ -1,0 +1,18 @@
+.current-player {
+	display: flex;
+    justify-content: center;
+	gap: 0.5rem;
+	font-size: 3rem;
+	margin-top: 2rem;
+
+	div {
+		padding: 0.5rem;
+	}
+}
+
+// class that is added in JS to highlight current player
+.green-bg-highlight {
+	background-color: #49ff58;
+	color: $primary-background-color;
+	border-radius: 10px;
+}
