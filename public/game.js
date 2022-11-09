@@ -1,3 +1,5 @@
+// parts adapted from https://dev.to/bornasepic/pure-and-simple-tic-tac-toe-with-javascript-4pgn
+
 const playerDisplay = document.getElementById("player-turn");
 const newGameButton = document.getElementById("new-game-button");
 const currentPlayerArea = document.getElementById("current-player");
@@ -149,8 +151,8 @@ function handleResultValidation() {
             // popup saying who won
             popMessage(`Player ${isPlayerXTurn ? players[0] : players[1]} has won the game.`);
 
-            // the round is won, break out of the loop
-            break;
+            // the round is won
+            return roundWon;
         }
     }
 
